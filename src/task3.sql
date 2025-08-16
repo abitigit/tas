@@ -2,9 +2,9 @@ SELECT
     u.Name as name,
     CONCAT(
         LOWER(SUBSTRING(u.username, 1, 2)),  -- First 2 chars of username
-        RIGHT(u.uid, 2),                    -- Last 2 digits of user ID
-        RIGHT(od.oid, 2),                   -- Last 2 digits of order ID
-        RIGHT(p.pid, 2)                     -- Last 2 digits of payment ID
+        '9',                                -- Static '9'
+        SUBSTRING(od.oid, 2, 2),            -- Middle 2 digits of order ID
+        SUBSTRING(p.pid, 2, 2)              -- Middle 2 digits of payment ID
     ) as invoice_no,
     od.created_at
 FROM 
