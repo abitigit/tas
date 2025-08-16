@@ -1,0 +1,38 @@
+{
+  "name": "vetting-sql-apt",
+  "version": "0.0.1",
+  "description": "SQL APT",
+  "main": "index.js",
+  "scripts": {
+    "task1": "node src/task1.js",
+    "task2": "node src/task2.js",
+    "task3": "node src/task3.js",
+    "seed:data": "node seed.js",
+    "test:main": "jest --config=jest.config.js --testPathPattern=test_main.spec",
+    "test:hidden": "jest --watchAll=false --silent --config=jest.config.reporter.js --testPathPattern=tests/test_hidden.spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TuringEnterprises/vetting-sql-apt.git"
+  },
+  "keywords": [
+    "SQL",
+    "APT"
+  ],
+  "author": "Faizal Vasaya <faizal.vasaya@turing.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TuringEnterprises/vetting-sql-apt/issues"
+  },
+  "homepage": "https://github.com/TuringEnterprises/vetting-sql-apt#readme",
+  "dependencies": {
+    "async-await-retry": "^2.0.1",
+    "jest": "^29.5.0",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.3",
+    "jest-environment-jsdom": "^29.5.0",
+    "minimist": "^1.2.8"
+  }
+}
