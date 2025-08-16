@@ -1,13 +1,19 @@
-SELECT
+SELECT 
     CONCAT(
-	    RIGHT(u.mobile_no, 2),
+        LOWER(SUBSTRING(u.username, 1, 2)),
+        RIGHT(u.mobile_no, 2),
         LEFT(od.oid, 2),
-        LEFT(p.pid, 2),
-        RIGHT(u.username, 2)
+        RIGHT(p.pid, 1)
     ) as invoice_no,
+    u.Name as name,
     od.created_at
-FROM
-    user u
-    JOIN order_details od on u.uid = od.user_id
-    JOIN payment p on od.oid = p.order_id
-ORDER BY od.created_at; 
+FROM 
+    ecommerce.user u
+JOIN 
+    ecommerce.order_details od ON u.uid = od.user_id
+JOIN 
+    ecommerce.payment p ON od.payment_id = p.pid
+WHERE 
+    YEAR(od.created_at) = 2023
+ORDER BY 
+    od.created_at DESC; 
