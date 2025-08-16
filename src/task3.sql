@@ -1,11 +1,11 @@
 SELECT 
-    CONCAT(
-        LOWER(SUBSTRING(u.username, 1, 2)),
-        RIGHT(u.mobile_no, 2),
-        LEFT(od.oid, 2),
-        RIGHT(p.pid, 1)
-    ) as invoice_no,
     u.Name as name,
+    CONCAT(
+        LOWER(SUBSTRING(u.username, 1, 2)),  -- First 2 chars of username
+        RIGHT(u.uid, 2),                    -- Last 2 digits of user ID
+        RIGHT(od.oid, 2),                   -- Last 2 digits of order ID
+        RIGHT(p.pid, 2)                     -- Last 2 digits of payment ID
+    ) as invoice_no,
     od.created_at
 FROM 
     ecommerce.user u
